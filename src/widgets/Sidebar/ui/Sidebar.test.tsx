@@ -3,7 +3,7 @@ import { renderWithTranslation } from 'shared/lib/test/renderWithTranslation/ren
 import { Sidebar } from './Sidebar';
 
 describe('Sidebar', () => {
-	test('asdasd', () => {
+	test('Test render', () => {
 		renderWithTranslation(<Sidebar />);
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument();
 	});

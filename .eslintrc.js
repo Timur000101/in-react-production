@@ -38,12 +38,32 @@ module.exports = {
 		'no-shadow': 'off',
 		'no-restricted-globals': 'off',
 		'import/extensions': 'off',
-		'import/no-extraneous-dependencies': 'warn',
 		'no-underscore-dangle': 'off',
-		'i18next/no-literal-string': ['error', { markupOnly: true }],
+		'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
 		'max-len': ['error', { ignoreComments: true, code: 200 }],
+		'import/no-extraneous-dependencies': [
+			'warn',
+			{
+				devDependencies: [
+					'test.{ts,tsx}', // repos with a single test file
+					'test-*.{ts,tsx}', // repos with multiple top-level test files
+					'**/*{.,_}{test,spec}.{ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
+					'**/jest.config.ts', // jest config
+					'**/jest.setup.ts', // jest setup
+				],
+				optionalDependencies: false,
+			},
+		],
 	},
 	globals: {
 		__IS_DEV__: true,
 	},
+	overrides: [
+		{
+			files: ['**/src/**/*.test.{ts,tsx}'],
+			rules: {
+				'i18next/no-literal-string': 'off',
+			},
+		},
+	],
 };
