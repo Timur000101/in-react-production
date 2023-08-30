@@ -2,26 +2,24 @@ module.exports = {
 	env: {
 		browser: true,
 		es2021: true,
-		jest: true,
+		jest: true
 	},
 	extends: [
 		'plugin:react/recommended',
 		'airbnb',
 		'plugin:i18next/recommended',
+		'plugin:storybook/recommended',
+		'prettier'
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaFeatures: {
-			jsx: true,
+			jsx: true
 		},
 		ecmaVersion: 'latest',
-		sourceType: 'module',
+		sourceType: 'module'
 	},
-	plugins: [
-		'react',
-		'@typescript-eslint',
-		'i18next',
-	],
+	plugins: ['react', '@typescript-eslint', 'i18next', 'prettier'],
 	rules: {
 		indent: [2, 'tab'],
 		'no-tabs': 0,
@@ -39,7 +37,7 @@ module.exports = {
 		'no-restricted-globals': 'off',
 		'import/extensions': 'off',
 		'no-underscore-dangle': 'off',
-		'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
+		'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }],
 		'max-len': ['error', { ignoreComments: true, code: 200 }],
 		'import/no-extraneous-dependencies': [
 			'warn',
@@ -49,21 +47,21 @@ module.exports = {
 					'test-*.{ts,tsx}', // repos with multiple top-level test files
 					'**/*{.,_}{test,spec}.{ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
 					'**/jest.config.ts', // jest config
-					'**/jest.setup.ts', // jest setup
+					'**/jest.setup.ts' // jest setup
 				],
-				optionalDependencies: false,
-			},
-		],
+				optionalDependencies: false
+			}
+		]
 	},
 	globals: {
-		__IS_DEV__: true,
+		__IS_DEV__: true
 	},
 	overrides: [
 		{
 			files: ['**/src/**/*.test.{ts,tsx}'],
 			rules: {
-				'i18next/no-literal-string': 'off',
-			},
-		},
-	],
-};
+				'i18next/no-literal-string': 'off'
+			}
+		}
+	]
+}
